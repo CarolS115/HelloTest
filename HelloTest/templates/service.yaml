@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    cloud.google.com/neg: '{"ingress":true}'
+  creationTimestamp: "2025-04-27T21:07:10Z"
+  finalizers:
+  - service.kubernetes.io/load-balancer-cleanup
+  labels:
+    app: hello-apptest
+  name: hello-apptest
+  namespace: default
+  resourceVersion: "94412"
+  uid: 4ee856d3-e2e2-471f-a78f-0eecb04b6a3e
+spec:
+  allocateLoadBalancerNodePorts: true
+  clusterIP: 34.118.225.170
+  clusterIPs:
+  - 34.118.225.170
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - nodePort: 32187
+    port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: hello-apptest
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+    - ip: 34.23.146.33
+      ipMode: VIP
